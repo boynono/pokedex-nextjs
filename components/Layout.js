@@ -2,6 +2,7 @@ import Head from "next/head";
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
+import Link from "next/link";
 
 const navigation = [
   { name: "Dashboard", href: "#", current: true },
@@ -35,16 +36,18 @@ const Layout = ({ title, children }) => {
                 </div>
                 <div className='flex flex-1 items-center justify-center sm:items-stretch sm:justify-start'>
                   <div className='flex flex-shrink-0 items-center'>
-                    <img
-                      className='block h-8 w-auto lg:hidden'
-                      src='https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500'
-                      alt='Your Company'
-                    />
-                    <img
-                      className='hidden h-8 w-auto lg:block'
-                      src='https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500'
-                      alt='Your Company'
-                    />
+                    <Link href='/'>
+                      <img
+                        className='block h-8 w-auto lg:hidden'
+                        src='https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500'
+                        alt='Your Company'
+                      />
+                      <img
+                        className='hidden h-8 w-auto lg:block'
+                        src='https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500'
+                        alt='Your Company'
+                      />
+                    </Link>
                   </div>
                   <div className='hidden sm:ml-6 sm:block'>
                     <div className='flex space-x-4'>
@@ -101,17 +104,17 @@ const Layout = ({ title, children }) => {
           </>
         )}
       </Disclosure>
-      <div className=' container mx-auto items-center border-b-2 px-6 py-2 h-24'>
-        <div className='bg-gray-300'>
-          <Head>
-            <title>{title}</title>
-            <link rel='icon' href='/favicon.ico' />
-          </Head>
-          <main className='container mx-auto max-w-xl pt-8 min-h-screen'>
-            {children}
-          </main>
-        </div>
+      {/* <div className=' container mx-auto items-center border-b-2 px-6 py-2 h-24'> */}
+      <div>
+        <Head>
+          <title>{title}</title>
+          <link rel='icon' href='/favicon.ico' />
+        </Head>
+        <main className='container mx-auto max-w-xl pt-8 min-h-screen bg'>
+          {children}
+        </main>
       </div>
+      {/* </div> */}
     </>
   );
 };
